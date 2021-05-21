@@ -19,18 +19,18 @@ def speak(audio):
 def Salutations():
  hour=int(datetime.datetime.now().hour)
  if hour>=0 and hour <12:
-        speak("BAD MORNING, HUMAN")
+        speak(" MORNING")
  elif hour >=12 and hour <18:
-        speak("BAD AFTERNOON, HUMAN")
+        speak("AFTERNOON")
  else :
-        speak("HAIL NIGHT TIME , HUMAN")
+        speak("NIGHT TIME ")
  
  speak ("my name is LUCIFER , WHAT DO YOU WANT ME TO DO  ? ")
 
 def takecommand():
     r=sr.Recognizer ()
     with sr.Microphone() as source:
-        print("I AM LISTENING HUMAN, SPEAK.......")
+        print("I AM LISTENING.......")
         speak("I am listening , speak")
         r.pause_threshold =1
         audio =r.listen(source)
@@ -71,11 +71,11 @@ if __name__ =="__main__":
         elif 'open stackoverflow' in query:
             speak("Opening Stackoverflow.....")
             webbrowser.open("stackoverflow.com")
-            #Leaving it empty , can put any number web browser of operations here
+            #Leaving it empty , can put any number web browser operations here
         
         elif 'play music' in query:
             speak("Playing Music")
-            music_dir= 'E:\\songs'
+            music_dir= ''   #Music path here 
             songs =os.listdir(music_dir)
             print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))
@@ -83,6 +83,10 @@ if __name__ =="__main__":
         elif 'the time' in query:
             strtime=datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"The time is {strtime}")
+        
+        elif 'Exit' in query:
+            exit(0)
+
 
     
 
